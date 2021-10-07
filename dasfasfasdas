@@ -1,0 +1,22 @@
+local loplr=game:GetService("Players").LocalPlayer
+
+local function damageplr(player)
+if player.Character~=nil and player.Character:FindFirstChild("Right Arm")~=nil and player.Character:FindFirstChild("Humanoid")~=nil then
+local ohInstance1 = loplr
+local ohInstance2 = player.Character["Right Arm"]
+local ohInstance3 = player.Character.Humanoid
+local ohNumber4 = 8
+local ohInstance5 = game:GetService("Players").LocalPlayer.Backpack.Bayonet.Handle.HitSound3
+game:GetService("Players").LocalPlayer.Backpack.Bayonet.Events.DamagePlayer:FireServer(ohInstance1, ohInstance2, ohInstance3, ohNumber4, ohInstance5)
+end
+end
+
+getgenv().loop=true
+while getgenv().loop==true do
+task.wait(0.5)
+for i,plr in pairs( game:GetService("Players"):GetChildren() ) do
+if plr.Name~=loplr.Name then
+damageplr(plr)
+end
+end
+end
